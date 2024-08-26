@@ -11,6 +11,11 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
+    "paths": {
+      "ngx-drag-resize2": [
+        "./dist/ngx-drag-resize2"
+      ]
+    },
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
