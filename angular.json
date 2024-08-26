@@ -3,23 +3,23 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-drag-resize2": {
+    "ngx-drag-resize": {
       "projectType": "library",
-      "root": "projects/ngx-drag-resize2",
-      "sourceRoot": "projects/ngx-drag-resize2/src",
+      "root": "projects/ngx-drag-resize",
+      "sourceRoot": "projects/ngx-drag-resize/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ngx-drag-resize2/ng-package.json"
+            "project": "projects/ngx-drag-resize/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-drag-resize2/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-drag-resize/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngx-drag-resize2/tsconfig.lib.json"
+              "tsConfig": "projects/ngx-drag-resize/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -27,7 +27,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ngx-drag-resize2/tsconfig.spec.json",
+            "tsConfig": "projects/ngx-drag-resize/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
@@ -36,36 +36,36 @@
         }
       }
     },
-    "ngx-drag-resize2-demo": {
+    "ngx-drag-resize-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/ngx-drag-resize2-demo",
-      "sourceRoot": "projects/ngx-drag-resize2-demo/src",
+      "root": "projects/ngx-drag-resize-demo",
+      "sourceRoot": "projects/ngx-drag-resize-demo/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ngx-drag-resize2-demo",
-            "index": "projects/ngx-drag-resize2-demo/src/index.html",
-            "browser": "projects/ngx-drag-resize2-demo/src/main.ts",
+            "outputPath": "dist/ngx-drag-resize-demo",
+            "index": "projects/ngx-drag-resize-demo/src/index.html",
+            "browser": "projects/ngx-drag-resize-demo/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "projects/ngx-drag-resize2-demo/tsconfig.app.json",
+            "tsConfig": "projects/ngx-drag-resize-demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/ngx-drag-resize2-demo/public"
+                "input": "projects/ngx-drag-resize-demo/public"
               }
             ],
             "styles": [
-              "projects/ngx-drag-resize2-demo/src/styles.scss"
+              "projects/ngx-drag-resize-demo/src/styles.scss"
             ],
             "scripts": []
           },
@@ -97,10 +97,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ngx-drag-resize2-demo:build:production"
+              "buildTarget": "ngx-drag-resize-demo:build:production"
             },
             "development": {
-              "buildTarget": "ngx-drag-resize2-demo:build:development"
+              "buildTarget": "ngx-drag-resize-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -115,16 +115,16 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "projects/ngx-drag-resize2-demo/tsconfig.spec.json",
+            "tsConfig": "projects/ngx-drag-resize-demo/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/ngx-drag-resize2-demo/public"
+                "input": "projects/ngx-drag-resize-demo/public"
               }
             ],
             "styles": [
-              "projects/ngx-drag-resize2-demo/src/styles.scss"
+              "projects/ngx-drag-resize-demo/src/styles.scss"
             ],
             "scripts": []
           }

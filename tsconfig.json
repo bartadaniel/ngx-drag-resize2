@@ -12,8 +12,8 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "paths": {
-      "ngx-drag-resize2": [
-        "./dist/ngx-drag-resize2"
+      "ngx-drag-resize": [
+        "./dist/ngx-drag-resize"
       ]
     },
     "esModuleInterop": true,
