@@ -3,10 +3,19 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start:lib": "ng build ngx-drag-resize --watch --configuration development",
+    "start:demo": "ng serve --open",
+    "test:lib": "ng test ngx-drag-resize",
+    "test:lib:ci": "ng test ngx-drag-resize --watch=false --browsers=ChromeHeadless",
+    "test:demo": "ng test ngx-drag-resize-demo",
+    "test:demo:ci": "ng test ngx-drag-resize-demo --watch=false --browsers=ChromeHeadless",
+    "build:lib:prod": "ng build ngx-drag-resize --configuration production",
+    "build:demo:prod": "ng build ngx-drag-resize-demo --configuration production",
+    "lib:version:major": "cd projects/ngx-drag-resize && npm run version:major",
+    "lib:version:minor": "cd projects/ngx-drag-resize && npm run version:minor",
+    "lib:version:patch": "cd projects/ngx-drag-resize && npm run version:patch",
+    "prepublish:lib": "npm run test:lib:ci && npm run build:lib:prod",
+    "publish:lib": "npm run prepublish:lib && cd dist/ngx-drag-resize && npm run publish"
   },
   "dependencies": {
     "@angular/animations": "^18.2.0",

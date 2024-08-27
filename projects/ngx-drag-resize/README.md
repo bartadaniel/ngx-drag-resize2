@@ -1,47 +1,66 @@
-# ngx-drag-resize2
+# ngx-drag-resize
 
-This library is a fork of the [ngx-drag-resize](https://github.com/dmytro-parfenov/ngx-drag-resize) library by dmytro-parfenov
+The Angular library provides opportunity to use drag and resize functionality on HTML element.
 
-The project contains Angular library [ngx-drag-resize](https://www.npmjs.com/package/ngx-drag-resize2) that provides opportunity to use drag and resize functionality on HTML element
+## Install
 
-# Getting Started
+NPM: `npm install ngx-drag-resize --save`
 
-## Structure
+Yarn: `yarn add ngx-drag-resize`
 
-Repository contains two projects
+## Usage
 
- - [ngx-drag-resize](https://github.com/bartadaniel/ngx-drag-resize2/tree/main/projects/ngx-drag-resize) - library source code
- - [ngx-drag-resize-demo](https://github.com/bartadaniel/ngx-drag-resize2/tree/main/projects/ngx-drag-resize-demo) - used for testing the library and provides demo application 
+Import `NgxDragResizeModule` to your working module
 
+```
+import {NgxDragResizeModule} from 'ngx-drag-resize';
 
-## Development
+@NgModule({
+  imports: [
+    NgxDragResizeModule
+  ]
+})
+export class AppModule { }
+```
 
-Run `npm run start:lib` for a build library. The library will automatically rebuild if you change any of the source files from [ngx-drag-resize](https://github.com/bartadaniel/ngx-drag-resize2/tree/main/projects/ngx-drag-resize).
+Use directives in your template
 
-Run `npm run start:demo` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files from [ngx-drag-resize-demo](https://github.com/bartadaniel/ngx-drag-resize2/tree/main/projects/ngx-drag-resize-demo).
+Simple drag
 
-It is necessary to run `npm run start:lib` before `npm run start:demo` to ensure that library has already built before the demo application will run.
+```
+<div ngxDrag>drag me</div>
+```
 
-## Running unit tests
+Initiates only by dragging `ngxDragHandle`
 
-Run `npm run test:lib` to execute the unit tests via [Karma](https://karma-runner.github.io) for the library.
+```
+<div ngxDrag>
+  <span>drag me</span>
+  <span ngxDragHandle>handle</span>
+</div>
+```
 
-Run `npm run test:demo` to execute the unit tests via [Karma](https://karma-runner.github.io) for the demo application.
+A simple resize will work only by using scroll or two fingers on touch devices
 
-## Build
+```
+<div ngxResize>resize me</div>
+```
 
-Run `npm run build:lib:prod` to make a production build of the library. The build artifacts will be stored in the `dist/ngx-drag-resize` directory.
+Resize using borders.
+You have to style all elements as you want.
 
-Run `npm run build:demo:prod` to make a production build of the demo application. The build artifacts will be stored in the `dist/ngx-drag-resize-demo` directory.
+```
+<div ngxResize>
+  <span>resize me</span>
+  <div [ngxResizeHandle]="NgxResizeHandleType.TopLeft"></div>
+  <div [ngxResizeHandle]="NgxResizeHandleType.Top"></div>
+  <div [ngxResizeHandle]="NgxResizeHandleType.TopRight"></div>
+  <div [ngxResizeHandle]="NgxResizeHandleType.Right"></div>
+  <div [ngxResizeHandle]="NgxResizeHandleType.BottomRight"></div>
+  <div [ngxResizeHandle]="NgxResizeHandleType.Bottom"></div>
+  <div [ngxResizeHandle]="NgxResizeHandleType.BottomLeft"></div>
+  <div [ngxResizeHandle]="NgxResizeHandleType.Left"></div>
+</div>
+```
 
-## Documentation
-
-Run `npm run docs:lib` to build the documentation for the library. The build artifacts will be stored in the `docs` directory.
-
-## Contributing
-
-[Contributing guideline](https://github.com/bartadaniel/ngx-drag-resize2/blob/main/CONTRIBUTING.md)
-
-## Further help
-
-To get more help mail to [dmitryparfenov937@gmail.com](mailto:barta.daniel@gmail.com?subject=[GitHub]%20ngx-drag-resize2)
+More examples you can find in [demo app](https://github.com/bartadaniel/ngx-drag-resize2/tree/main/projects/ngx-drag-resize-demo)
