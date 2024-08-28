@@ -11,11 +11,11 @@
     "test:demo:ci": "ng test ngx-drag-resize-demo --watch=false --browsers=ChromeHeadless",
     "build:lib:prod": "ng build ngx-drag-resize --configuration production",
     "build:demo:prod": "ng build ngx-drag-resize-demo --configuration production",
-    "lib:version:major": "cd projects/ngx-drag-resize && npm run version:major",
-    "lib:version:minor": "cd projects/ngx-drag-resize && npm run version:minor",
-    "lib:version:patch": "cd projects/ngx-drag-resize && npm run version:patch",
+    "lib:version:major": "npm run version:major --prefix projects/ngx-drag-resize",
+    "lib:version:minor": "npm run version:minor --prefix projects/ngx-drag-resize",
+    "lib:version:patch": "npm run version:patch --prefix projects/ngx-drag-resize",
     "prepublish:lib": "npm run test:lib:ci && npm run build:lib:prod",
-    "publish:lib": "npm run prepublish:lib && cd dist/ngx-drag-resize && npm run publish"
+    "publish:lib": "npm run prepublish:lib && npm run publish --prefix projects/ngx-drag-resize"
   },
   "dependencies": {
     "@angular/animations": "^18.2.0",
