@@ -2,6 +2,11 @@
 
 The Angular library provides opportunity to use drag and resize functionality on HTML element.
 
+This library is a fork of the [ngx-drag-resize](https://github.com/dmytro-parfenov/ngx-drag-resize) library by dmytro-parfenov. 
+
+Changes made: 
+- Updated to Angular 18
+
 ## Install
 
 NPM: `npm install ngx-drag-resize --save`
