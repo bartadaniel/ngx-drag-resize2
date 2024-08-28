@@ -153,4 +153,9 @@ main {
     left: calc(50% - #{$medium-rect / 2});
     top: calc(50% - #{$medium-rect / 2});
   }
+
+  #resize-area-2 .rect {
+    width: 100px;
+    height: 56.25px;
+  }
 }
