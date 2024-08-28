@@ -6,6 +6,7 @@ This library is a fork of the [ngx-drag-resize](https://github.com/dmytro-parfen
 
 Changes made: 
 - Updated to Angular 18
+- Replaced `ngxResizeAspectRatio` with `ngxKeepAspectRatio`
 
 ## Install
 

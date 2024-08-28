@@ -86,13 +86,9 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
   @Input() ngxResizeMinHeight = 0;
 
   /**
-   * Aspect ratio the element will use during resize
-   *
-   * @example
-   * 16/9 - 9/16 * 100 = 56.25
-   * 1/1 - 1/1 * 100 = 100
+   * Indicates whether the aspect ratio should be maintained during resizing
    */
-  @Input() ngxResizeAspectRatio = 0;
+  @Input() ngxKeepAspectRatio = false;
 
   /**
    * Disables any resize events
@@ -451,8 +447,8 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
 
     const proportionalSize =
       this.ngxResizeLockAxis === 'y'
-        ? this.fromWidthProportion(width)
-        : this.fromHeightProportion(height);
+        ? this.fromWidthProportion(width, hostElementRect)
+        : this.fromHeightProportion(height, hostElementRect);
 
     if (proportionalSize && this.ngxResizeLockAxis === 'y') {
       height = proportionalSize;
@@ -547,7 +543,7 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
   }
 
   private topLeftMovement(event: Movement, hostElementRect: DOMRect, boundaryRect: Boundary): void {
-    if (this.ngxResizeAspectRatio) {
+    if (this.ngxKeepAspectRatio) {
       this.topMovement(event, hostElementRect, boundaryRect);
       return;
     }
@@ -557,7 +553,7 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
   }
 
   private topRightMovement(event: Movement, hostElementRect: DOMRect, boundaryRect: Boundary): void {
-    if (this.ngxResizeAspectRatio) {
+    if (this.ngxKeepAspectRatio) {
       this.topMovement(event, hostElementRect, boundaryRect);
       return;
     }
@@ -567,7 +563,7 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
   }
 
   private bottomRightMovement(event: Movement, hostElementRect: DOMRect, boundaryRect: Boundary): void {
-    if (this.ngxResizeAspectRatio) {
+    if (this.ngxKeepAspectRatio) {
       this.bottomMovement(event, hostElementRect, boundaryRect);
       return;
     }
@@ -577,7 +573,7 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
   }
 
   private bottomLeftMovement(event: Movement, hostElementRect: DOMRect, boundaryRect: Boundary): void {
-    if (this.ngxResizeAspectRatio) {
+    if (this.ngxKeepAspectRatio) {
       this.bottomMovement(event, hostElementRect, boundaryRect);
       return;
     }
@@ -601,8 +597,8 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
     const widthProportions = initiatorType ? this.getWidthProportions(boundaryRect, hostElementRect, initiatorType, height) : null;
 
     if (widthProportions) {
-      top = top + (height - this.fromWidthProportion(widthProportions.width));
-      height = Math.min(height, this.fromWidthProportion(widthProportions.width));
+      top = top + (height - this.fromWidthProportion(widthProportions.width, hostElementRect));
+      height = Math.min(height, this.fromWidthProportion(widthProportions.width, hostElementRect));
     }
 
     this.updateHostStyle('top', `${this.basedOnBoundary(top, 'top')}px`);
@@ -634,7 +630,7 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
     const heightProportions = initiatorType ? this.getHeightProportions(boundaryRect, hostElementRect, initiatorType, width) : null;
 
     if (heightProportions) {
-      width = Math.min(width, this.fromHeightProportion(heightProportions.height));
+      width = Math.min(width, this.fromHeightProportion(heightProportions.height, hostElementRect));
     }
 
     this.updateHostStyle('width', `${width}px`);
@@ -665,7 +661,7 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
     const widthProportions = initiatorType ? this.getWidthProportions(boundaryRect, hostElementRect, initiatorType, height) : null;
 
     if (widthProportions) {
-      height = Math.min(height, this.fromWidthProportion(widthProportions.width));
+      height = Math.min(height, this.fromWidthProportion(widthProportions.width, hostElementRect));
     }
 
     this.updateHostStyle('height', `${height}px`);
@@ -693,8 +689,8 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
     const heightProportions = initiatorType ? this.getHeightProportions(boundaryRect, hostElementRect, initiatorType, width) : null;
 
     if (heightProportions) {
-      left = left + (width - this.fromHeightProportion(heightProportions.height));
-      width = Math.min(width, this.fromHeightProportion(heightProportions.height));
+      left = left + (width - this.fromHeightProportion(heightProportions.height, hostElementRect));
+      width = Math.min(width, this.fromHeightProportion(heightProportions.height, hostElementRect));
     }
 
     this.updateHostStyle('left', `${this.basedOnBoundary(left, 'left')}px`);
@@ -720,7 +716,7 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
     left: number;
     width: number;
   } | null {
-    let width = this.fromHeightProportion(height);
+    let width = this.fromHeightProportion(height, hostElementRect);
 
     if (!width) {
       return null;
@@ -759,7 +755,7 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
     top: number;
     height: number;
   } | null {
-    let height = this.fromWidthProportion(width);
+    let height = this.fromWidthProportion(width, hostElementRect);
 
     if (!height) {
       return null;
@@ -787,20 +783,22 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
   }
 
   /**
-   * Get width based on {@link ngxResizeAspectRatio} from height
+   * Get width based on the element's current aspect ratio
    */
-  private fromHeightProportion(height: number): number {
-    return !this.ngxResizeAspectRatio ? 0 : Math.floor((height / this.ngxResizeAspectRatio) * 100);
+  private fromHeightProportion(height: number, hostElementRect: DOMRect): number {
+    const aspectRatio = hostElementRect.width / hostElementRect.height;
+    return !this.ngxKeepAspectRatio ? 0 : height * (aspectRatio);
   }
 
   /**
-   * Get height based on {@link ngxResizeAspectRatio} from width
+   * Get height based on the element's current aspect ratio
    */
-  private fromWidthProportion(width: number): number {
-    return !this.ngxResizeAspectRatio ? 0 : Math.floor((width * this.ngxResizeAspectRatio) / 100);
+  private fromWidthProportion(width: number, hostElementRect: DOMRect): number {
+    const aspectRatio = hostElementRect.width / hostElementRect.height;
+    return !this.ngxKeepAspectRatio ? 0 : width / (aspectRatio);
   }
 
-  /**
+  /** 
    * Updates host element style
    */
   private updateHostStyle(style: string, value: any): void {
