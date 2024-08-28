@@ -1,9 +1,9 @@
 {
   "name": "ngx-drag-resize2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "peerDependencies": {
-    "@angular/common": "^18.2.0",
-    "@angular/core": "^18.2.0"
+    "@angular/common": "18.x",
+    "@angular/core": "18.x"
   },
   "dependencies": {
     "tslib": "^2.3.0"
