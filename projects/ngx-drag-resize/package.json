@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bartadaniel/ngx-drag-resize2"
+    "url": "git+https://github.com/bartadaniel/ngx-drag-resize2.git"
   },
   "peerDependencies": {
     "@angular/common": "18.x",
