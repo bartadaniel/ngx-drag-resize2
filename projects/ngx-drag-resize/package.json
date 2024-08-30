@@ -19,6 +19,9 @@
     "version:major": "npm version major",
     "version:minor": "npm version minor",
     "version:patch": "npm version patch",
+    "build:prod": "ng build ngx-drag-resize --configuration production",
+    "test:ci": "ng test ngx-drag-resize --watch=false --browsers=ChromeHeadless",
+    "prepublish": "npm run build:prod",
     "publish": "npm publish",
     "release": "release-it",
     "release:ci": "release-it --ci"
