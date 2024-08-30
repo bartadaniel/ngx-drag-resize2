@@ -89,8 +89,7 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
    * Aspect ratio the element will use during resize
    *
    * @example
-   * 16/9 - 9/16 * 100 = 56.25
-   * 1/1 - 1/1 * 100 = 100
+   * 9/16 = 0.5625
    */
   @Input() ngxResizeAspectRatio = 0;
 
@@ -790,14 +789,14 @@ export class NgxResizeDirective extends BoundaryDirective implements AfterViewIn
    * Get width based on {@link ngxResizeAspectRatio} from height
    */
   private fromHeightProportion(height: number): number {
-    return !this.ngxResizeAspectRatio ? 0 : Math.floor((height / this.ngxResizeAspectRatio) * 100);
+    return !this.ngxResizeAspectRatio ? 0 : Math.floor(height * this.ngxResizeAspectRatio);
   }
 
   /**
    * Get height based on {@link ngxResizeAspectRatio} from width
    */
   private fromWidthProportion(width: number): number {
-    return !this.ngxResizeAspectRatio ? 0 : Math.floor((width * this.ngxResizeAspectRatio) / 100);
+    return !this.ngxResizeAspectRatio ? 0 : Math.floor((width / this.ngxResizeAspectRatio));
   }
 
   /**

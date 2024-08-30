@@ -38,6 +38,11 @@ main {
       height: 250px;
       width: 250px;
     }
+
+    &.landscape {
+      width: 100px;
+      height: calc(100px / (16 / 9));
+    }
   }
 
   .move {
@@ -152,10 +157,5 @@ main {
   .offset-center-medium {
     left: calc(50% - #{$medium-rect / 2});
     top: calc(50% - #{$medium-rect / 2});
-  }
-
-  #resize-area-2 .rect {
-    width: 100px;
-    height: 56.25px;
   }
 }
