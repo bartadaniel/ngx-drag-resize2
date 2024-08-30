@@ -1,4 +1,6 @@
-# ngx-drag-resize2
+# ngx-drag-resize2 
+[![npm](https://img.shields.io/npm/v/ngx-drag-resize2.svg)](https://www.npmjs.com/package/ngx-drag-resize2)
+
 
 This library is a fork of the [ngx-drag-resize](https://github.com/dmytro-parfenov/ngx-drag-resize) library by dmytro-parfenov
 
