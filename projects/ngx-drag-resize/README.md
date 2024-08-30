@@ -8,6 +8,12 @@ Changes made:
 - Updated to Angular 18
 - Changed `ngxResizeAspectRatio` to be expected as `width/height`
 
+# Demo
+![Preview](https://github.com/bartadaniel/ngx-drag-resize2/blob/main/demo.gif?raw=true)
+
+[Live Demo here](https://ngx-drag-resize2.web.app/)
+
+
 ## Install
 
 NPM: `npm install ngx-drag-resize --save`
