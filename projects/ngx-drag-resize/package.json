@@ -21,7 +21,7 @@
     "version:patch": "npm version patch",
     "publish": "npm publish",
     "release": "release-it",
-    "relase:ci": "release-it --ci"
+    "release:ci": "release-it --ci"
   },
   "sideEffects": false
 }
