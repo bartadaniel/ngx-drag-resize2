@@ -4,6 +4,11 @@ This library is a fork of the [ngx-drag-resize](https://github.com/dmytro-parfen
 
 The project contains Angular library [ngx-drag-resize](https://www.npmjs.com/package/ngx-drag-resize2) that provides opportunity to use drag and resize functionality on HTML element
 
+# Demo
+![Preview](demo.gif)
+
+[Live Demo here](https://ngx-drag-resize2.web.app/)
+
 # Getting Started
 
 ## Structure
@@ -40,8 +45,4 @@ Run `npm run docs:lib` to build the documentation for the library. The build art
 
 ## Contributing
 
-[Contributing guideline](https://github.com/bartadaniel/ngx-drag-resize2/blob/main/CONTRIBUTING.md)
-
-## Further help
-
-To get more help mail to [dmitryparfenov937@gmail.com](mailto:barta.daniel@gmail.com?subject=[GitHub]%20ngx-drag-resize2)
+[Contributing guideline](CONTRIBUTING.md)
