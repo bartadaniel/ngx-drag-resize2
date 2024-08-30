@@ -7,7 +7,8 @@
     "after:bump": ["npx auto-changelog -p", "npm run prepublish" ]
   },
   "github": {
-    "release": true
+    "release": true,
+    "releaseName": "v${version}"
   },
   "npm": {
     "publish": true,
