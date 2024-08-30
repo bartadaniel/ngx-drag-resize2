@@ -13,7 +13,7 @@ Changes made:
 
 [Live Demo here](https://ngx-drag-resize2.web.app/)
 
-
+ 
 ## Install
 
 NPM: `npm install ngx-drag-resize --save`
