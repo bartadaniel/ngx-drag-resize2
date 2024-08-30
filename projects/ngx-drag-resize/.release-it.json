@@ -4,13 +4,14 @@
     "commitMessage": "chore: release v${version}"
   },
   "hooks": {
-    "before:init": ["npm run test:lib:ci"],
+    "before:init": ["npm run prepublish:lib"],
     "after:bump": "npx auto-changelog -p"
   },
   "github": {
     "release": true
   },
   "npm": {
-    "publish": true
+    "publish": true,
+    "publishPath": "../../dist/ngx-drag-resize"
   }
 }
