@@ -15,7 +15,9 @@
     "lib:version:minor": "npm run version:minor --prefix projects/ngx-drag-resize",
     "lib:version:patch": "npm run version:patch --prefix projects/ngx-drag-resize",
     "prepublish:lib": "npm run test:lib:ci && npm run build:lib:prod",
-    "publish:lib": "npm run prepublish:lib && cd dist/ngx-drag-resize && npm publish"
+    "predeploy:demo": "npm run prepublish:lib && npm run test:demo:ci && npm run build:demo:prod",
+    "publish:lib": "npm run prepublish:lib && cd dist/ngx-drag-resize && npm publish",
+    "deploy:demo": "npm run predeploy:demo && firebase deploy"
   },
   "dependencies": {
     "@angular/animations": "^18.2.0",
