@@ -4,7 +4,7 @@
     "commitMessage": "chore: release v${version}"
   },
   "hooks": {
-    "after:bump": ["npx auto-changelog -p","mv CHANGELOG.md ../../", "npm run prepublish" ]
+    "after:bump": ["npx auto-changelog -p", "npm run prepublish" ]
   },
   "github": {
     "release": true
