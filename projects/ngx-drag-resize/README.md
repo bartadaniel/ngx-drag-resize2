@@ -1,4 +1,4 @@
-# ngx-drag-resize
+# ngx-drag-resize2
 
 The Angular library provides opportunity to use drag and resize functionality on HTML element.
 
