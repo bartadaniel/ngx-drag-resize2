@@ -39,6 +39,7 @@
     "@angular/compiler-cli": "^18.2.0",
     "@release-it/conventional-changelog": "^8.0.1",
     "@types/jasmine": "~5.1.0",
+    "auto-changelog": "^2.4.0",
     "conventional-changelog-angular": "^8.0.0",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",

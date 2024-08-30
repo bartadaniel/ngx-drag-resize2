@@ -4,7 +4,7 @@
     "commitMessage": "chore: release v${version}"
   },
   "hooks": {
-    "after:bump": ["npm run prepublish"]
+    "after:bump": ["npx auto-changelog -p","mv CHANGELOG.md ../../", "npm run prepublish" ]
   },
   "github": {
     "release": true
@@ -12,13 +12,5 @@
   "npm": {
     "publish": true,
     "publishPath": "../../dist/ngx-drag-resize"
-  },
-  "plugins": {
-    "@release-it/conventional-changelog": {
-      "preset": {
-        "name": "angular"
-      },
-      "infile": "../../CHANGELOG.md"
-    }
   }
 }
