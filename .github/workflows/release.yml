@@ -2,6 +2,10 @@ name: Release & Publish Package
 
 on: workflow_dispatch
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,18 +16,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: npm ci
       - name: Initialize Git user
         run: |
             git config --global user.email "barta.daniel@gmail.com"
             git config --global user.name "Daniel Barta"
-      - name: Initialize NPM
-        run: npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
       - name: Run release
         run: npm run release
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
