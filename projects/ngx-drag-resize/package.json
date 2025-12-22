@@ -7,8 +7,8 @@
     "url": "git+https://github.com/bartadaniel/ngx-drag-resize2.git"
   },
   "peerDependencies": {
-    "@angular/common": "19.x",
-    "@angular/core": "19.x"
+    "@angular/common": "20.x",
+    "@angular/core": "20.x"
   },
   "homepage": "https://ngx-drag-resize2.web.app",
   "dependencies": {

@@ -5,7 +5,7 @@ The Angular library provides opportunity to use drag and resize functionality on
 This library is a fork of the [ngx-drag-resize](https://github.com/dmytro-parfenov/ngx-drag-resize) library by dmytro-parfenov. 
 
 Changes made: 
-- Updated to Angular 18
+- Updated to Angular 20
 - Changed `ngxResizeAspectRatio` to be expected as `width/height`
 
 # Demo
